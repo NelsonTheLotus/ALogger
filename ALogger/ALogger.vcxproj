@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Authority\Authority.hpp" />
     <ClInclude Include="Source\Entity\Config.hpp" />
     <ClInclude Include="Source\Entity\Settings.hpp" />
     <ClInclude Include="Source\Entity\Properties.hpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Source\Frame\Level.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Authority\Authority.cpp" />
     <ClCompile Include="Source\Entity\Config.cpp" />
     <ClCompile Include="Source\Entity\Settings.cpp" />
     <ClCompile Include="Source\Entity\Properties.cpp" />
