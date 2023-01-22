@@ -1,0 +1,96 @@
+Loosly based on spdlog (https://github.com/gabime/spdlog)
+
+several logging types:
+ - system		: [system]
+ - application	: [app]
+ - user			: [user] (for input - usualy)
+ - debug		: [debug]
+ - static       : [clog] - reserved for the CLogger library
+
+several logging levels:
+ - info			: green
+ - warn			: yellow
+ - critical		: magenta
+ - fatal		: red
+
+features:
+ - backlogging	: log but wait to write to output
+   > dump		: dumps all backtrace to output
+   > drop		: drops one backtrace to output
+   > flush		: removes all backtrace
+ - timing		: times the events
+   > stamp		: stamp the message time
+   > start		: start the clock
+   > stop		: stops the clock
+   > reset      : resets the clock
+ - position		: places events within the project tree
+   > place		: retrieves line + file
+   > count		: retrieves line
+   > find		: retrieves file
+ - naming       : logging entity namming
+   > static     : for static logging
+   > rename     : for changing the name
+   > link       : to link to the variable's name
+   > showName   : to show name in the log (T/F)
+ - patterns		: used for custom output formats
+   > color		: changes the color used for a log type
+   > formatting	: c-style string formatting
+ - credentials  : sets the logger level
+   > sign in    : switches to another credential
+   > create     : creates a new user credential
+   > protect    : to protect &&?
+ - outputs		: used for different types of output
+   > stdout		: standard output
+   > file.clog  : clog generated file
+   > stderr		: standard error
+   > syslog()	: for system status logging
+   > debugger   : for debugging ?
+ - extra		: extra features
+   > exit		: application exit code
+   > multithread: multithread support
+   > async		: asynchronous logging
+   > rotate		: rotate files? based on build type ?
+   > platforms  : x86, x64, ...
+   > user UUID  : sets a unique logger credential
+   > events     : triggers a function upon event
+
+
+Object scheme:
+
+Logger Entity - calls the functions
+     |
+Logger credential - sets the logging level
+     |
+Loger type - sets the log type
+
+
+
+Message attributes:
+
+position    : line, file
+time        : chronoName, time, (date)
+level       : info, warning, critical, fatal
+clearance   : system, app, user, debug, (clog)
+issuer name : <custom>
+message     : <chars>
+thread      : <number>
+
+
+format: default
+
+[clearance] - <name>: level - time
+     |in thread "thread" in file: "file" at line: "line":
+     |      message
+     |      message
+     |      message
+
+
+Filling system:
+    Entity: controls the logger flow. All logging operations are called from the entity. also contains the entity settings.
+    Frame: Controls the output format. Inlucdes levelling of the log message as well as the coloration.
+    Authority: controls the type of entity that is logging. Sets all relevant parameters (output stream, format pointer, properties, ...)
+    Control: is the system control for the logging library. The user does not call anything in thsi folder, only the library uses it to infom the user.
+    Schedule: INcludes the Thread and Async operations as well as the Time operations.
+    Events: controls the logging on events. Also holds the exiting operations and the positionning operations.
+    Storage: holds all backlogging data, controls the "unlogged logs" (creates seperate dump file), and holds the long-lasting configurations.
+
