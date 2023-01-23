@@ -8,10 +8,17 @@ namespace alog
 	public:
 		bool useClassStream;
 		bool showName;
+		bool showClear;
 		bool refreshStream;
 
 	public:
-		Settings(bool useClassStream, bool showName);
+		Settings
+		(
+			bool useClassStream, 
+			bool showName,
+			bool showClear
+		)
+			;
 		~Settings();
 	};
 

@@ -7,23 +7,30 @@
 
 #include "Properties.hpp"
 #include "Settings.hpp"
+//#include "Config.hpp"
+#include "../Authority/Authority.hpp"
+#include "../Frame/Level.hpp"
 
 namespace alog
 {
 
+	template<class logEnt>
 	class Logger
 	{
 	private:
 		Properties entityProps;
 		Settings entitySets;
+		std::unique_ptr<Authority<logEnt>> classLogger;
 
 	public:
 		Logger
 		(
 			std::string name							= "default", 
 			std::shared_ptr<std::ostream> outputStream	= std::shared_ptr<std::ostream>(&std::cout), 
+			clearance entityClear						= clearance::entity,
 			bool useClassStream							= false, 
-			bool showName								= true
+			bool showName								= true,
+			bool showCred								= true
 		);
 		
 		~Logger();

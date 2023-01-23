@@ -30,10 +30,13 @@
     <ClInclude Include="Source\Frame\Level.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity\Config.hpp">
+    <ClInclude Include="Source\Frame\Config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Authority\Authority.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Authority\LoggerClass.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +50,13 @@
     <ClCompile Include="Source\Entity\Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entity\Config.cpp">
+    <ClCompile Include="Source\Frame\Config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Authority\Authority.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Authority\LoggerClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,8 +2,13 @@
 
 namespace alog
 {
-	Properties::Properties(std::shared_ptr<std::ostream> stream, std::string name):
-		entityStream(stream), outputStream(stream), entityName(name)
+	Properties::Properties
+	(
+		std::shared_ptr<std::ostream> stream,
+		std::string name,
+		clearance clear
+	):
+		entityStream(stream), entityName(name), entityClear(clear)
 	{
 		return;
 	}
@@ -19,7 +24,7 @@ namespace alog
 		return;
 	}
 
-	void Properties::setOutputStream()
+	/*void Properties::setOutputStream()
 	{
 		this->setOutputStream(this->entityStream);
 		return;
@@ -34,7 +39,7 @@ namespace alog
 	std::shared_ptr<std::ostream> Properties::getOutputStream()
 	{
 		return this->outputStream;
-	}
+	}*/
 
 	void Properties::setName(std::string newName)
 	{
@@ -45,5 +50,15 @@ namespace alog
 	std::string Properties::getName()
 	{
 		return this->entityName;
+	}
+
+	void Properties::setClear(clearance newCred)
+	{
+		this->entityClear = newCred;
+		return;
+	}
+	clearance Properties::getClear()
+	{
+		return clearance(this->entityClear);
 	}
 }

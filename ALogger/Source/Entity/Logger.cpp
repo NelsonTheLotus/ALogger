@@ -2,7 +2,7 @@
 
 #include "Properties.hpp"
 #include "Settings.hpp"
-#include "Config.hpp"
+//#include "Config.hpp"
 
 #include <iostream>
 #include <string>
@@ -11,13 +11,16 @@ namespace alog
 {
 	Logger::Logger
 	(
-		std::string name, 
-		std::shared_ptr<std::ostream> outputStream, 
-		bool useClassStream, 
-		bool showName
+		std::string name,
+		std::shared_ptr<std::ostream> outputStream,
+		clearance entityClear,
+		bool useClassStream,
+		bool showName,
+		bool showCred
 	): 
-		entityProps(Properties(outputStream, name)),
-		entitySets(Settings(useClassStream, showName))
+		entityProps(Properties(outputStream, name, entityClear)),
+		entitySets(Settings(useClassStream, showName, showCred))
+		//lastMessage(Config("", outputStream, true, logLevel::nill, entityClass::entity))
 	{
 		return;
 	}
