@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Authority\Clearance.hpp" />
     <ClInclude Include="Source\Authority\LoggerClass.hpp" />
     <ClInclude Include="Source\Authority\Authority.hpp" />
     <ClInclude Include="Source\Frame\Config.hpp" />

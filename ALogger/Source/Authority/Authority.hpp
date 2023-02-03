@@ -3,27 +3,14 @@
 #include <fstream>
 #include <memory>
 
+#include "Clearance.hpp"
+
 #include "../Entity/Properties.hpp"
 #include "../Entity/Settings.hpp"
 
 
 namespace alog
 {
-
-	enum clearance : int
-	{
-		entity,
-		system,
-		application,
-		debug,
-		user
-	};
-
-	class DefEnt {}; //defualt entity: no ouput
-	class System {};
-	class Application {};
-	class Debug {};
-	class User {};
 
 	class Authority //abstract
 	{
@@ -33,10 +20,10 @@ namespace alog
 
 	public:
 
-		static std::unique_ptr<Authority> getClearEntity(clearance entClear);
+		static std::unique_ptr<Authority> getClassEntity(clearance entClear);
 
 		virtual void setSharedStream(std::shared_ptr<std::ostream> newStream) = 0;
-		virtual void logMessage(std::string message, Properties entProps, Settings entSets) = 0;
+		virtual void logMessage(std::string message, Properties* entProps, Settings* entSets) = 0;
 
 	};
 

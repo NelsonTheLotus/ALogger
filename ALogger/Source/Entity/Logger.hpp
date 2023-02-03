@@ -7,20 +7,18 @@
 
 #include "Properties.hpp"
 #include "Settings.hpp"
-//#include "Config.hpp"
 #include "../Authority/Authority.hpp"
 #include "../Frame/Level.hpp"
 
 namespace alog
 {
 
-	template<class logEnt>
 	class Logger
 	{
 	private:
 		Properties entityProps;
 		Settings entitySets;
-		std::unique_ptr<Authority<logEnt>> classLogger;
+		std::unique_ptr<Authority> classLogger;
 
 	public:
 		Logger
@@ -36,6 +34,7 @@ namespace alog
 		~Logger();
 
 		void log(std::string message);
+		void signIn(clearance entityClear = clearance::entity);
 
 		//void info(std::string message);
 		//void warn(std::string message);

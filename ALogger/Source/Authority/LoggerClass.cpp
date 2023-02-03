@@ -1,13 +1,16 @@
 #include "LoggerClass.hpp"
 
+#include <iostream>
+
 #include "Authority.hpp"
 
 namespace alog
 {
-
     template<class logClear>
-    LoggerClass<logClear>::LoggerClass(std::shared_ptr<std::ostream> classStream):
-        classStream(classStream)
+    std::shared_ptr<std::ostream> LoggerClass<logClear>::classStream = NULL;
+
+    /*template<class logClear>
+    LoggerClass<logClear>::LoggerClass()
     {
         return;
     }
@@ -21,15 +24,16 @@ namespace alog
     template<class logClear>
     void LoggerClass<logClear>::setSharedStream(std::shared_ptr<std::ostream> newStream)
     {
-        clearStream = newStream;
+        classStream = newStream;
         return;
     }
 
     template<class logClear>
-    void LoggerClass<logClear>::logMessage(std::string message, Properties entProps, Settings entSets)
+    void LoggerClass<logClear>::logMessage(std::string message, Properties* entProps, Settings* entSets)
     {
+        std::cout << message << std::endl;
         //config to frame
-    }
+    }*/
 
     template<>
     std::string LoggerClass<DefEnt>::getClearName()

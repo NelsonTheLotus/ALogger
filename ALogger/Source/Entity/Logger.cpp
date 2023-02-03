@@ -2,7 +2,7 @@
 
 #include "Properties.hpp"
 #include "Settings.hpp"
-//#include "Config.hpp"
+#include "../Authority/Authority.hpp"
 
 #include <iostream>
 #include <string>
@@ -20,8 +20,8 @@ namespace alog
 	): 
 		entityProps(Properties(outputStream, name, entityClear)),
 		entitySets(Settings(useClassStream, showName, showCred))
-		//lastMessage(Config("", outputStream, true, logLevel::nill, entityClass::entity))
 	{
+		classLogger = Authority::getClassEntity(entityClear);
 		return;
 	}
 
@@ -32,31 +32,15 @@ namespace alog
 
 	void Logger::log(std::string message)
 	{
-		if (this->entitySets.refreshStream)
-		{
-			if (this->entitySets.useClassStream)
-			{
-				this->entityProps.setOutputStream(std::shared_ptr<std::ostream>(& std::cout));
-			}
-			else
-			{
-				this->entityProps.setOutputStream();
-			}
-		}
-
-		std::ostream& outStream = *(this->entityProps.getOutputStream());
-
-		if (this->entitySets.showName)
-		{
-			outStream << this->entityProps.getName()<< ": ";
-		}
-
-		outStream << message << std::endl;
+		//setLevel
+		//Change settings if necessary
+		classLogger->logMessage(message, &this->entityProps, &this->entitySets);
 	}
 
-	/*void Logger::info(std::string message)
+	void Logger::signIn(clearance entityClear)
 	{
-
-	}*/
+		this->classLogger = Authority::getClassEntity(entityClear);
+		return;
+	}
 
 }

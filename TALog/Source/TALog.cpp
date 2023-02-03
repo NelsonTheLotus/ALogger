@@ -6,6 +6,7 @@
 int main()
 {
 	auto newLogger = alog::Logger();
+	newLogger.signIn(alog::clearance::system);
 
 	newLogger.log("hello");
 

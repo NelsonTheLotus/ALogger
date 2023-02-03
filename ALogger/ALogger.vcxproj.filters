@@ -39,6 +39,9 @@
     <ClInclude Include="Source\Authority\LoggerClass.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Authority\Clearance.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Entity\Logger.cpp">
